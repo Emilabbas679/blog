@@ -41,7 +41,7 @@
 @import url(https://www.multipurposethemes.com/admin/powerbi-admin-template/html/assets/vendor_plugins/timepicker/bootstrap-timepicker.min.css);
 @import url(https://www.multipurposethemes.com/admin/powerbi-admin-template/html/assets/vendor_plugins/pace/pace.min.css);
 @import url(https://www.multipurposethemes.com/admin/powerbi-admin-template/html/assets/vendor_components/fullcalendar/fullcalendar.min.css);
-@import "../../assets/vendor_components/fullcalendar/fullcalendar.print.min.css" print;
+/*@import "../../assets/vendor_components/fullcalendar/fullcalendar.print.min.css" print;*/
 @import url(https://www.multipurposethemes.com/admin/powerbi-admin-template/html/assets/vendor_components/weather-icons/weather-icons.css);
 
 /*# sourceMappingURL=vendors_css.css.map */

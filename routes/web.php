@@ -27,6 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::prefix('admin')->group(function() {
     Route::get("/", [AdminController::class, 'index'])->name('admin.home');
+
     Route::resource('user', UserController::class);
 });
 

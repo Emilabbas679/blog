@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -12,10 +14,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Request $request)
     {
+
         return view('admin.users.index');
     }
+
+
 
     /**
      * Show the form for creating a new resource.

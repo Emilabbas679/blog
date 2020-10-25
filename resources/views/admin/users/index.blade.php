@@ -1,5 +1,5 @@
 @extends("layouts.admin")
-
+@section('title', 'Users')
 @section('content')
     <div class="content-wrapper">
         <div class="container">
@@ -7,13 +7,12 @@
             <div class="content-header">
                 <div class="d-flex align-items-center">
                     <div class="mr-auto">
-                        <h3 class="page-title">Data Tables</h3>
+                        <h3 class="page-title">Users</h3>
                         <div class="d-inline-block align-items-center">
                             <nav>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                                    <li class="breadcrumb-item" aria-current="page">Tables</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
+                                    <li class="breadcrumb-item" aria-current="page">Users</li>
                                 </ol>
                             </nav>
                         </div>
@@ -31,32 +30,22 @@
 
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Hover Export Data Table</h3>
-                                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+                                <h3 class="box-title text-right float-right"><a href="javascript:void(0)" class="edit btn btn-outline-primary btn-md">Create</a></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                    <table class="table table-bordered yajra-datatable">
                                         <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>No</th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Operations</th>
                                         </tr>
                                         </thead>
-
                                         <tbody>
-
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -72,6 +61,25 @@
 
         </div>
     </div>
+    <div class="modal center-modal fade" id="modal-center" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Your content comes here</p>
+                </div>
+                <div class="modal-footer modal-footer-uniform">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary float-right">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
@@ -83,19 +91,37 @@
 
     <script src="/back/js/pages/data-table.js"></script>
 
-    <script>
-        $(function() {
-            $('#example').DataTable({
+
+    <script type="text/javascript">
+        $(function () {
+
+            var table = $('.yajra-datatable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '/admin/data/users',
+                ajax: "/admin/data/users",
                 columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' }
-                ]
+                    {data: 'DT_RowIndex', name: 'id'},
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: true,
+                        searchable: true
+                    },
+                ],
+                "iDisplayLength" : 25,
+                dom: 'Bfrtip',
+                buttons: [
+
+                    'copy', 'csv', 'excel', 'pdf', 'print',
+
+
+                ],
+                // select: true
+
             });
+
         });
     </script>
-
 @endsection
